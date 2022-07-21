@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "py2gsuite"
+version = "0.1.0"
+description = ""
+authors = ["ktro2828 <kotaro.uetake@tier4.jp>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+google-api-python-client = "^2.52.0"
+google-auth-httplib2 = "^0.1.0"
+google-auth-oauthlib = "^0.5.2"
+coloredlogs = "^15.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "^4.0.1"
+black = "^22.6.0"
+isort = "^5.9.3"
+pep8-naming = "^0.13.0"
+pydocstyle = "^6.1.1"
+pre-commit = "^2.19.0"
+lark = "^1.1.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line_length = 120
