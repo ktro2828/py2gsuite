@@ -23,8 +23,7 @@ class APIBase(ABC):
     def close(self) -> None:
         self.service.close()
 
-    def __del__(self):
-        del self.creds
+    def __del__(self):        
         self.close()
 
     def __enter__(self):
