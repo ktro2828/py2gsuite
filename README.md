@@ -5,15 +5,10 @@ py2gsuite is wrapper of Google Sheets/Slides API. You can upload your python obj
 ## Pre-requires
 
 - Python >= 3.8
+
 - Poetry
 
-  - Install poetry
-
-    ```bash
-    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-    ```
-
-  - To learn more about poetry, refer to [Poetry documentation](https://python-poetry.org/docs/)
+  - [Poetry documentation](https://python-poetry.org/docs/)
 
 - Google OAuth credential
 
@@ -24,7 +19,7 @@ py2gsuite is wrapper of Google Sheets/Slides API. You can upload your python obj
 ## Get started
 
 ```shell
-$ pip install py2gsuite
+pip install py2gsuite
 ```
 
 ## References
