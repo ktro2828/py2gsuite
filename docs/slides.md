@@ -3,18 +3,14 @@
 About detail, see [py2gsuite/api/slides.py](../py2gsuite/api/slides.py)
 
 ```python
-from py2gsuite import CredentialType, ScopeType, SlidesAPI
+from py2gsuite import SlidesAPI
 from py2gsuite.utils import get_credential
 
 # Pre-required
 credential_file: str = <YOUR_CREDENTIAL_PATH>.json
 presentation_id: str = <YOUR_PRESENTATION_ID>
 
-creds = get_credential(
-    credential_file,
-    CredentialType.OAUTH,
-    ScopeType.SHEETS_EDITABLE,
-)
+creds = get_credential(credential_file)
 
 api = SlidesAPI(creds, presentation_id)
 

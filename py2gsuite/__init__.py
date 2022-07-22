@@ -14,7 +14,7 @@ __all__ = (
     "PR",
     "SE",
     "SR",
-    "API_KEY",
+    "API_KEYS",
     "OAUTH",
     "SERVICE_ACCOUNT",
     "CredentialType",
@@ -38,6 +38,6 @@ SE = ScopeType.SHEETS_EDITABLE
 SR = ScopeType.SHEETS_READONLY
 
 # CredentialType alias
-API_KEY = CredentialType.API_KEY
+API_KEYS = CredentialType.API_KEYS
 OAUTH = CredentialType.OAUTH
 SERVICE_ACCOUNT = CredentialType.SERVICE_ACCOUNT

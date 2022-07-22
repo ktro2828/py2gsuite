@@ -3,18 +3,14 @@
 About detail, see [py2gsuite/api/sheets.py](../py2gsuite/api/sheets.py)
 
 ```python
-from py2gsuite import CredentialType, ScopeType, SheetsAPI
+from py2gsuite import SheetsAPI
 from py2gsuite.utils import get_credential
 
 # Pre-required
 credential_file: str = <YOUR_CREDENTIAL_PATH>.json
 sheets_id: str = <YOUR_SPREADSHEETS_ID>
 
-creds = get_credential(
-    credential_file,
-    CredentialType.OAUTH,
-    ScopeType.SHEETS_EDITABLE,
-)
+creds = get_credential(credential_file)
 
 api = SheetsAPI(creds, sheets_id)
 

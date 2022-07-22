@@ -4,8 +4,7 @@ import pytest
 from httplib2 import Credentials
 
 from py2gsuite.api import SheetsAPI
-from py2gsuite.utils import CredentialType, get_credential
-from py2gsuite.utils.types import ScopeType
+from py2gsuite.utils import get_credential
 
 
 class TestSheetsAPI:
@@ -13,12 +12,7 @@ class TestSheetsAPI:
     if not osp.exists(credential_file):
         pytest.skip("There is no credential file .json")
 
-    creds: Credentials = get_credential(
-        credential_file,
-        CredentialType.OAUTH,
-        ScopeType.SHEETS_EDITABLE,
-        port=4567,
-    )
+    creds: Credentials = get_credential(credential_file, port=4567)
     sheet_id: str = "1F-eEyCnrsMNQtXWNCCGG7rV-c4yCfJGTL5ZTLVHogTw"
     api: SheetsAPI = SheetsAPI(creds, sheet_id)
 

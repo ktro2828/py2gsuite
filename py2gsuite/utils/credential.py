@@ -12,17 +12,18 @@ logger = get_logger()
 
 def get_credential(
     credential_file: str,
-    credential_type: CredentialType,
-    scope: ScopeType = ScopeType,
+    credential_type: CredentialType = CredentialType.OAUTH,
+    scope: ScopeType = ScopeType.DRIVE,
     **kwargs,
 ) -> Credentials:
     """[summary]
     Returns Credentials instance.
 
     Args:
-        credential_file (str)
-        credential_type (CredentialType)
-        scope (ScopeType)
+        credential_file (str): The json file of credential.
+        credential_type (CredentialType): The type of Credential.
+            For Sheets/SlidesAPI only allows OAuth2.0 or API Keys. Defaults to CredentialType.OAUTH.
+        scope (ScopeType): The type of scope. Defaults to ScopeType.DRIVE.
 
     **kwargs:
         host (str): Defaults to "localhost".
@@ -44,7 +45,7 @@ def get_credential(
 
     creds: Credentials
     try:
-        if credential_type == CredentialType.API_KEY:
+        if credential_type == CredentialType.API_KEYS:
             # TODO
             raise NotImplementedError("Only support CredentialType.OAUTH")
         elif credential_type == CredentialType.OAUTH:
@@ -54,8 +55,7 @@ def get_credential(
             )
             creds: Credentials = flow.run_local_server(host=host, port=port)
         elif credential_type == CredentialType.SERVICE_ACCOUNT:
-            # TODO
-            raise NotImplementedError("Only support CredentialType.OAUTH")
+            raise ValueError("Only support OAuth2.0 or API keys")
         else:
             raise TypeError(f"`credential_type` must be an element of py2gsuite.Type, but got {credential_type}")
     except OSError as err:

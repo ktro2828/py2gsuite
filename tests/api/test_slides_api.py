@@ -5,7 +5,6 @@ from google.oauth2.credentials import Credentials
 
 from py2gsuite.api import SlidesAPI
 from py2gsuite.utils.credential import get_credential
-from py2gsuite.utils.types import CredentialType, ScopeType
 
 
 class TestSlidesAPI:
@@ -13,12 +12,7 @@ class TestSlidesAPI:
     if not osp.exists(credential_file):
         pytest.skip("There is no credential file .json")
 
-    creds: Credentials = get_credential(
-        credential_file,
-        CredentialType.OAUTH,
-        ScopeType.PRESENTATION_EDITABLE,
-        port=5678,
-    )
+    creds: Credentials = get_credential(credential_file, port=5678)
     presentation_id: str = "119bzp-JdYgH5D71LpB89U9X-ameDp24F-gnU2_Ht_4A"
     api: SlidesAPI = SlidesAPI(creds, presentation_id)
 

@@ -2,7 +2,7 @@ import argparse
 
 from google.oauth2.credentials import Credentials
 
-from py2gsuite import CredentialType, ScopeType, SlidesAPI
+from py2gsuite import SlidesAPI
 from py2gsuite.utils import get_credential
 
 
@@ -24,29 +24,12 @@ def main():
         help="Presentation ID",
         required=True,
     )
-    parser.add_argument(
-        "--scope",
-        choices=["read", "edit"],
-        help="Scope type, [read: ReadOnly, edit: Editable]",
-        required=True,
-    )
 
     args = parser.parse_args()
     credential_file: str = args.credential
     presentation_id: str = args.presentation_id
-    scope_name: str = args.scope
-    if scope_name == "read":
-        scope: ScopeType = ScopeType.PRESENTATION_READONLY
-    elif scope_name == "edit":
-        scope: ScopeType = ScopeType.PRESENTATION_EDITABLE
-    else:
-        raise ValueError(f"Unexpected scope: {scope_name}")
 
-    creds: Credentials = get_credential(
-        credential_file,
-        CredentialType.OAUTH,
-        scope,
-    )
+    creds: Credentials = get_credential(credential_file)
 
     with SlidesAPI(creds, presentation_id) as api:
         text: str = "Hello world!"
