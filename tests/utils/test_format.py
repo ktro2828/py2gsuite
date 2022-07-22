@@ -1,4 +1,4 @@
-from py2gsuite.utils.format import class2dict, class2str, dict2str
+from py2gsuite.utils.format import class2dict, class2str, dict2list, dict2str
 
 
 class DummyTestClass:
@@ -28,3 +28,9 @@ def test_dict2str():
     out_format = dict2str(d, format=True)
     assert out == "{'age': 50, 'name': 'Bob'}"
     assert out_format == "\n{'age': 50, 'name': 'Bob'}\n"
+
+
+def test_dict2list():
+    d = {"age": 50, "name": "Bob", "height": 180, "country": "USA"}
+    out1 = dict2list(d, ["age", "height", "country"])
+    assert out1 == ["50", "180", "USA"]
