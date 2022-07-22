@@ -5,7 +5,6 @@ from typing import Any, Dict, List, Optional
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import Resource, build
 from googleapiclient.errors import HttpError
-
 from py2gsuite.utils import get_logger
 
 from .base import APIBase
@@ -117,3 +116,16 @@ class SheetsAPI(APIBase):
             return False
 
         return True
+
+    def is_empty(self, range_name: str) -> bool:
+        """Check whether specified cells are empty.
+        Args:
+            range_name (str)
+
+        Returns:
+            bool
+        """
+        result = self.service.spreadsheets().values().get(spreadsheetId=self.id, range=range_name).execute()
+        values = result.get("values")
+
+        return values is None
