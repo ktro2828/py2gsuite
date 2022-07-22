@@ -1,6 +1,6 @@
 # py2gsuite
 
-py2gsuite is wrapper of Google Sheets/Slides API.
+py2gsuite is wrapper of Google Sheets/Slides API. You can upload your python object to your Sheets/Slides directoly.
 
 ## Pre-requires
 
@@ -15,7 +15,7 @@ py2gsuite is wrapper of Google Sheets/Slides API.
 
   - To learn more about poetry, refer to [Poetry documentation](https://python-poetry.org/docs/)
 
-- Credentials
+- Google OAuth credential
 
   - Authorization credentials for a desktop application. To learn how to create credentials for a desktop application, refer to [Create credentials](https://developers.google.com/workspace/guides/create-credentials)
 
@@ -23,15 +23,9 @@ py2gsuite is wrapper of Google Sheets/Slides API.
 
 ## Get started
 
-- Install py2gslide
-
-  ```bash
-  $ git clone https://github.com/ktro2828/py2gslide.git
-  # Install with poetry
-  $ poetry add ./py2gslide
-  # or Install with pip
-  $ pip install -e ./py2gslide
-  ```
+```shell
+$ pip install py2gsuite
+```
 
 ## References
 
