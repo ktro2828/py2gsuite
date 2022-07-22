@@ -7,6 +7,8 @@ from py2gsuite.utils import get_credential
 
 
 def main():
+    """Simple example of SheetsAPI."""
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "-c",

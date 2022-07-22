@@ -13,7 +13,7 @@ logger = get_logger()
 def get_credential(
     credential_file: str,
     credential_type: CredentialType,
-    scope: ScopeType,
+    scope: ScopeType = ScopeType,
     **kwargs,
 ) -> Credentials:
     """[summary]

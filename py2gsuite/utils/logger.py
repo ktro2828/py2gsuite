@@ -4,6 +4,15 @@ import coloredlogs
 
 
 def get_logger(name=__name__, level=logging.INFO):
+    """Returns logger.
+
+    Args:
+        name (str): module name.
+        level (int): logging level.
+
+    Returns:
+        logger (logging.RootLogger): logger.
+    """
     logger = logging.getLogger(name)
     logger.handlers.clear()
     logger.propagate = False

@@ -89,21 +89,21 @@ def dict2str(dict_obj: Dict[str, Any], format: bool = False) -> str:
 
 def dict2list(
     dict_obj: Dict[str, Any],
-    map_list: Optional[List[str]] = None,
+    keys: Optional[List[str]] = None,
 ) -> List[str]:
     """Convert dict to list of str.
 
     Args:
         dict_obj (Dict[str, Any])
-        map_list (Optional[List[str]]): Defaults to None.
+        keys (Optional[List[str]]): Defaults to None.
 
     Returns:
-        List[str]
+        List[str]:
     """
-    if map_list is not None:
+    if keys is not None:
         ret: List[str] = []
-        for key in map_list:
-            ret.append(str(dict_obj[key]))
+        for k in keys:
+            ret.append(str(dict_obj[k]))
         return ret
 
     return list(_get_values(dict_obj))

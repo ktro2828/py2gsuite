@@ -17,12 +17,27 @@ logger = get_logger()
 
 
 class SlidesAPI(APIBase):
+    """The wrapper of Google Slides API.
+
+    Attributes:
+        creds (Credentials): The Credentials instance.
+        id (str): The ID of presentation.
+        service (Resource): The Resource instance.
+    """
+
     def __init__(
         self,
         creds: Credentials,
         presentation_id: str,
         service: Optional[Resource] = None,
     ) -> None:
+        """
+        Args:
+            creds (Credentials): Credentials instance.
+            presentation_id (str): ID of presentation.
+            service (Optional[Resource]): Resource instance to connect to spreadsheet.
+                Defaults to None.
+        """
         super().__init__(creds=creds, file_id=presentation_id)
         if service is None:
             self.service: Resource = build("slides", "v1", credentials=self.creds)
@@ -117,7 +132,7 @@ class SlidesAPI(APIBase):
             layout (SlideLayout): Defaults to SlideLayout.BLANK
 
         Returns:
-            bool: Whether succeeded to post.
+            bool: Whether succeeded to create new slide.
         """
         # if self.exists_page(page_id):
         #     return True
@@ -154,7 +169,7 @@ class SlidesAPI(APIBase):
             magnitude (int): magnitude of textbox. Defaults to 350.
 
         Returns:
-            bool: Whether succeeded to post.
+            bool: Whether succeeded to add text.
         """
         if page_id is None:
             page_id = "p"
@@ -194,8 +209,11 @@ class SlidesAPI(APIBase):
             page_id (Optional[str]): ID of page. Defaults to None.
 
         **kwargs:
-            image_id (str): ID of image. Defaults to 'NewImage'
-            magnitude (int): Size of image. Defaults to 4000
+            image_id (str): ID of image. If None, create with random token. Defaults to None.
+            magnitude (int): Size of image. Defaults to 4000.
+
+        Returns:
+            bool: Whether succeeded to add image.
         """
         if page_id is None:
             page_id = "p"
@@ -229,7 +247,18 @@ class SlidesAPI(APIBase):
         return False
 
     def create_empty_table(self, table_id: str, rows: int, cols: int, page_id: Optional[str] = None) -> bool:
-        """"""
+        """Create empty table.
+
+        Args:
+            table_id (str): The ID of table.
+            rows (int): The number of rows.
+            cols (int): The number of columns.
+            page_id (Optional[str]): The ID of page. If None, the table will be created on the first page.
+                Defaults to None.
+
+        Returns:
+            bool: Whether succeeded to create the table.
+        """
         if page_id is None:
             page_id = "p"
 
@@ -261,12 +290,12 @@ class SlidesAPI(APIBase):
         """Add values to the table.
 
         Args:
-            values (List[List[str]])
-            table_id (Optional[str])
-            page_id (Optional[str])
+            values (List[List[str]]): Values of elements, in shape (rows, cols).
+            table_id (Optional[str]): ID of table. If None, create new table. Defaults to None.
+            page_id (Optional[str]): ID of page. If None, create on the first page. Defaults to None.
 
         Returns:
-            bool
+            bool: Whether succeeded to add elements in the table.
         """
         assert isinstance(values, list)
         assert all([isinstance(e, list) for e in values])
